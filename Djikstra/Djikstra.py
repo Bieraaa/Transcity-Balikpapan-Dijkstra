@@ -1,7 +1,9 @@
 import heapq
 from dataclasses import dataclass, field
 
-# ===== Data hasil pencarian =====
+# =========================================
+#  Data hasil pencarian 
+# =========================================
 
 @dataclass
 class TransitInfo:
@@ -24,45 +26,38 @@ class RuteResult:
     transit:         list[TransitInfo]
     koridor_dipakai:list[str]
     pesan:          str = " "
+    total_biaya:     int   = 0
+    detail_biaya:    str   = ""
+    tipe_penumpang:  str   = "Umum"
+    pesan:           str   = ""
 
-# ==== Algoritma Djikstra ====
+# =========================================
+#  Algoritma Djikstra 
+# =========================================
 
 def djikstra_raw(graph: dict, id_asal: str) -> tuple[dict, dict]:
-    dist = {
-        node: float("inf") for node in graph
-    }
-    prev = {
-        node: None for node in graph
-    }
+    dist = {node: float("inf") for node in graph}
+    prev = {node: None for node in graph}
     dist[id_asal] = 0
-
-    # priority queue: (jarak, id_halte)
     pq = [(0, id_asal)]
 
     while pq:
-        jarak_sekarang, node = heapq.heappop(pq)
-
-        # Skip kalau ketemu jarak lebih pendek
-        if jarak_sekarang > dist[node]:
+        jarak_skrg, node = heapq.heappop(pq)
+        if jarak_skrg > dist[node]:
             continue
-
         for tetangga in graph.get(node, []):
-            ke = tetangga["ke"]
-            waktu = tetangga["waktu_menit"]
-            koridor = tetangga["koridor"]
-
+            ke      = tetangga["ke"]
+            waktu   = tetangga["waktu_menit"]
             jarak_baru = dist[node] + waktu
             if jarak_baru < dist[ke]:
                 dist[ke] = jarak_baru
-                prev[ke] = (node, koridor)
+                prev[ke] = (node, tetangga["koridor"])
                 heapq.heappush(pq, (jarak_baru, ke))
-
     return dist, prev
 
-def _rekontruksi_path(prev: dict, id_asal: str, id_tujuan: str) -> list[tuple]:
+def _rekonstruksi_path(prev: dict, id_asal: str, id_tujuan: str) -> list[tuple]:
     path = []
     node = id_tujuan
-
     while node is not None:
         info = prev.get(node)
         if info:
@@ -74,55 +69,73 @@ def _rekontruksi_path(prev: dict, id_asal: str, id_tujuan: str) -> list[tuple]:
     path.reverse()
     return path
 
-def _deteksi_transit(path: list[tuple]) -> list[TransitInfo]:
+def _deteksi_transit(path: list[tuple], id_ke_halte: dict) -> list[dict]:
+    """
+    Deteksi perpindahan koridor.
+    PERBAIKAN: cek perubahan koridor aktual (non-TRANSIT),
+    bukan hanya keberadaan label 'TRANSIT' di edge.
+    """
     transit = []
-    for i in range(1, len(path)):
-        kor_prev = path[i - 1][1]
-        kor_curr = path[i][1]
-        if(
-            kor_prev is not None
-            and kor_curr is not None
-            and kor_prev != kor_curr
-            and "TRANSIT" in (kor_prev, kor_curr)
-        ):
-            transit.append(path[i][0]) #id halte transit
+    koridor_aktif = None
+
+    for i, (halte_id, edge_koridor) in enumerate(path):
+        if edge_koridor is None or edge_koridor == "TRANSIT":
+            continue
+        if koridor_aktif is None:
+            koridor_aktif = edge_koridor
+            continue
+        if edge_koridor != koridor_aktif:
+            # Perpindahan koridor terjadi di halte sebelumnya
+            halte_transit_id = path[i - 1][0]
+            h = id_ke_halte.get(halte_transit_id, {})
+            transit.append({
+                "di_halte_id":   halte_transit_id,
+                "di_halte_nama": h.get("nama", halte_transit_id),
+                "dari_koridor":  koridor_aktif,
+                "ke_koridor":    edge_koridor,
+            })
+            koridor_aktif = edge_koridor
     return transit
 
-# ==== Fungsi di GUI ====
+# =========================================
+# Fungsi Utama
+# =========================================
 
 def cari_rute(
-        graph:      dict,
-        halte_list: list,
-        id_asal:    str,
-        id_tujuan:  str,
+    graph:      dict,
+    halte_list: list,
+    id_asal:    str,
+    id_tujuan:  str,
+    pelajar:    bool = False,
 ) -> RuteResult:
-    
-    # buat lookup id -> nama halte
-    id_ke_halte = {
-        h["id"]: h for h in halte_list
-    }
+    """
+    Cari rute tercepat dari id_asal ke id_tujuan.
 
-    # validasi input
+    Args:
+        graph      : adjacency list dari graphBuilder
+        halte_list : list halte dari halte.json
+        id_asal    : ID halte asal  (e.g. "H001")
+        id_tujuan  : ID halte tujuan (e.g. "H045")
+        pelajar    : True = pakai tarif pelajar Rp 2.000/koridor
+
+    Returns:
+        RuteResult (include total_biaya & detail_biaya)
+    """
+    from Djikstra.graphBuilder import hitung_biaya
+
+    id_ke_halte = {h["id"]: h for h in halte_list}
+
+    # Validasi
     if id_asal not in graph:
-        return RuteResult(
-            False, id_asal, id_tujuan, "?", "?", [], [], 0, 0, [], [], pesan=f"ID asal '{id_asal}' tidak ditemukan." 
-        )
-    
+        return RuteResult(False, id_asal, id_tujuan, "?", "?",[], [], 0, 0, [], [], pesan=f"ID '{id_asal}' tidak ditemukan.")
     if id_tujuan not in graph:
-        return RuteResult(
-            False, id_asal, id_tujuan, "?", "?", [], [], 0, 0, [], [], pesan=f"ID tujuan '{id_tujuan}' tidak ditemukan."
-        )
-    
+        return RuteResult(False, id_asal, id_tujuan, "?", "?",[], [], 0, 0, [], [], pesan=f"ID '{id_tujuan}' tidak ditemukan.")
     if id_asal == id_tujuan:
         nama = id_ke_halte[id_asal]["nama"]
-        return RuteResult(
-            True, id_asal, id_tujuan, nama, nama, [id_asal], [nama], 0, 1, [], [], pesan="Asal dan tujuan sama."
-        )
-    
-    # Jalankan di Djikstra
+        return RuteResult(True, id_asal, id_tujuan, nama, nama,[id_asal], [nama], 0, 1, [], [], pesan="Asal dan tujuan sama.")
+
     dist, prev = djikstra_raw(graph, id_asal)
 
-    # Tidak ada jalur
     if dist[id_tujuan] == float("inf"):
         return RuteResult(
             False, id_asal, id_tujuan,
@@ -131,42 +144,44 @@ def cari_rute(
             [], [], 0, 0, [], [],
             pesan="Tidak ada jalur yang menghubungkan kedua halte."
         )
-    
-    # Rekontruksi Path
-    path = _rekontruksi_path(prev, id_asal, id_tujuan)
-    rute_id = [p[0] for p in path]
+
+    path     = _rekonstruksi_path(prev, id_asal, id_tujuan)
+    rute_id  = [p[0] for p in path]
     rute_nama = [id_ke_halte.get(p[0], {}).get("nama", p[0]) for p in path]
 
-    # Deteksi Transit
-    transit_id = _deteksi_transit(path)
-    transit_info = []
-    for i, tid in enumerate(transit_id):
-        h = id_ke_halte.get(tid, {}) # Cari peubahan koridor di sekitar titik transit
-        idx = rute_id.index(tid)
-        kor_dari = path[idx - 1][1] if idx > 0 else "?"
-        kor_ke = path[idx][1] if idx < len(path) else "?"
-        transit_info.append(TransitInfo(
-            di_halte_id     = tid,
-            di_halte_nama   = h.get("nama", tid),
-            dari_koridor    = kor_dari.replace("TRANSIT", "").strip() or kor_dari,
-            ke_koridor      = kor_ke.replace("TRANSIT", "").strip() or kor_ke
-        ))
+    # Deteksi transit (versi baru)
+    transit_raw  = _deteksi_transit(path, id_ke_halte)
+    transit_info = [
+        TransitInfo(
+            di_halte_id   = t["di_halte_id"],
+            di_halte_nama = t["di_halte_nama"],
+            dari_koridor  = t["dari_koridor"],
+            ke_koridor    = t["ke_koridor"],
+        )
+        for t in transit_raw
+    ]
 
-    # Korudor unik yang dipakai (Tanpa Transit)
+    # Koridor unik yang dipakai
     koridor_dipakai = list(dict.fromkeys(
         p[1] for p in path if p[1] and p[1] != "TRANSIT"
     ))
 
+    # Hitung biaya
+    biaya = hitung_biaya(koridor_dipakai, pelajar=pelajar)
+
     return RuteResult(
-        ditemukan       =   True,
-        id_asal         =   id_asal,
-        id_tujuan       =   id_tujuan,
-        nama_asal       =   id_ke_halte.get(id_asal,{}).get("nama", id_asal),
-        nama_tujuan     =   id_ke_halte.get(id_tujuan, {}).get("nama", id_tujuan),
-        rute_id         =   rute_id,
-        rute_nama       =   rute_nama,
-        total_waktu     =   dist[id_tujuan],
-        jumlah_halte    =   len(rute_id),
-        transit          =   transit_info,
-        koridor_dipakai =   koridor_dipakai
+        ditemukan       = True,
+        id_asal         = id_asal,
+        id_tujuan       = id_tujuan,
+        nama_asal       = id_ke_halte.get(id_asal, {}).get("nama", id_asal),
+        nama_tujuan     = id_ke_halte.get(id_tujuan, {}).get("nama", id_tujuan),
+        rute_id         = rute_id,
+        rute_nama       = rute_nama,
+        total_waktu     = dist[id_tujuan],
+        jumlah_halte    = len(rute_id),
+        transit         = transit_info,
+        koridor_dipakai = koridor_dipakai,
+        total_biaya     = biaya["total_biaya"],
+        detail_biaya    = biaya["detail"],
+        tipe_penumpang  = biaya["tipe"],
     )

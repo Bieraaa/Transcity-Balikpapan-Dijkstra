@@ -12,7 +12,7 @@ def _fetch(query : str) -> dict | None :
         "q": query,
         "format": "json",
         "limit" : 1,
-        "countycodes": "id",
+        "countrycodes": "id",
         "viewbox": BALIKPAPAN_BBOX,
         "bounded": 1
     }
@@ -41,15 +41,15 @@ def cari_koordinat(nama: str, queries: list[str]) -> dict:
                 "nama": nama,
                 "lat": result["lat"],
                 "lon": result["lon"],
-                "query-berhasil": q,
+                "query_berhasil": q,
                 "status": "found"
             }
-        print(f"    ❌ Tidak ditemukan → perlu input manual")
 
-        return{
-            "nama": nama,
-            "lat": None,
-            "lon": None,
-            "query-berhasil": None,
-            "status": "not_found"
+        print(f"    ❌ Tidak ditemukan → perlu input manual")
+        return {
+        "nama":           nama,
+        "lat":            None,
+        "lon":            None,
+        "query_berhasil": None,
+        "status":         "not_found",
         }
