@@ -7,105 +7,137 @@ from itertools import groupby
 # =========================================
 
 KOORDINAT_MANUAL: dict[str, tuple[float, float]] = {
-
-    # ── Koridor 1 ──
-    "Pelabuhan Semayang":          (-1.26780, 116.83150),
-    "Melawai":                     (-1.27120, 116.82780),
-    "Lapangan Merdeka":            (-1.26900, 116.82960),
-    "RS Pertamina":                (-1.26500, 116.82900),
-    "PNW":                         (-1.26200, 116.83100),
-    "Banua Patra":                 (-1.26100, 116.83000),
-    "Bank Indonesia":              (-1.26400, 116.83200),
-    "SD Bhayangkari":              (-1.26600, 116.83300),
-    "Kantor Pos":                  (-1.26700, 116.83500),
-    "Pasar Klandasan":             (-1.26800, 116.83700),
-    "Terminal Rasa":               (-1.26900, 116.83900),
-    "Blauran":                     (-1.27000, 116.84100),
-    "Gedung Parkir Klandasan":     (-1.27100, 116.84300),
-    "Simpang Plaza Balikpapan B":  (-1.27200, 116.84500),
-    "Simpang Plaza Balikpapan A":  (-1.27300, 116.84700),  # ← TRANSIT UTAMA
-    "BCA":                         (-1.27400, 116.84900),
-    "Bank Danamon":                (-1.27500, 116.85100),
-    "Bulog":                       (-1.27600, 116.85300),
-    "Nuansa":                      (-1.27700, 116.85500),
-    "Balikpapan Permai":           (-1.27800, 116.85700),  # ← TRANSIT 2A
-    "Ace Hardware":                (-1.27900, 116.85900),
-    "Samsat Markoni":              (-1.28000, 116.86100),
-    "DKK":                         (-1.28100, 116.86300),
-    "Pasar Baru":                  (-1.28200, 116.86500),
-    "Kehutanan":                   (-1.28300, 116.86700),
-    "Benakatai":                   (-1.28400, 116.86900),
-    "Al Ihsan":                    (-1.28500, 116.87100),
-    "SDN 006":                     (-1.28600, 116.87300),
-    "Mekar Sari":                  (-1.28700, 116.87500),  # ← TRANSIT 2A & 2B
-    "Gunung Pasir":                (-1.28800, 116.87700),
-    "KPP Pratama Penajam":         (-1.28900, 116.87900),
-    "Puskib":                      (-1.29000, 116.88100),
-    "Pomal":                       (-1.29100, 116.88300),
-    "SDN 001":                     (-1.29200, 116.88500),
-    "Karang Jati":                 (-1.29300, 116.88700),
-    "Muara Rapak":                 (-1.29400, 116.88900),
-    "Ibnu Sina":                   (-1.29500, 116.89100),
-    "Plaza Rapak":                 (-1.29600, 116.89300),
-    "Strat":                       (-1.29700, 116.89500),
-    "SMAN 2 Balikpapan":           (-1.29800, 116.89700),
-    "Samsat Muara Rapak":          (-1.29900, 116.89900),
-    "SMPN 3 Balikpapan":           (-1.30000, 116.90100),
-    "Bengrah":                     (-1.25800, 116.90800),
-    "Inpres 4":                    (-1.25600, 116.90600),
-    "SMK Setia Budi":              (-1.25400, 116.90400),
-    "Pulau Indah":                 (-1.25200, 116.90200),
-    "Simpang Perumnas":            (-1.25000, 116.90000),
-    "SD Kartika V-3":              (-1.24800, 116.89800),
-    "Yon Zipur":                   (-1.24600, 116.89600),
-    "Perintis":                    (-1.24400, 116.89400),
-    "Perumahan Ramayana":          (-1.24200, 116.89200),
-    "Pemotongan Hewan":            (-1.24000, 116.89000),
-    "Graha Indah":                 (-1.23800, 116.88800),
-    "Masjid Santalia":             (-1.23600, 116.88600),
-    "Perum PGRI":                  (-1.23400, 116.88400),
-    "PT. PAC":                     (-1.23200, 116.88200),
-    "Perum Griya Kariangau":       (-1.23000, 116.88000),
-    "Puskesmas Kariangau":         (-1.22800, 116.87800),
-    "SMP 16":                      (-1.22600, 116.87600),
-    "SD 020":                      (-1.22400, 116.87400),
-    "PT Petrosea":                 (-1.22200, 116.87200),
-    "Kelurahan Kariangau":         (-1.22000, 116.87000),
-    "Pelabuhan Kariangau":         (-1.21800, 116.86800),
-    "Bandara Sepinggan":           (-1.26820, 116.89390),
-
-    # ── Koridor 2A ──
-    "Terminal Batu Ampar":         (-1.23150, 116.87200),  # ← TRANSIT 2A & 2B
-    "Sabulussalam":                (-1.23400, 116.87500),
-    "Simpang Batu Ampar":          (-1.23600, 116.87700),
-    "Pasar Butun":                 (-1.23800, 116.87900),
-    "Al Auliya":                   (-1.24000, 116.88100),
-    "Pelangi Metro":               (-1.24200, 116.88300),
-    "RSKD":                        (-1.24400, 116.88500),
-    "Grand City":                  (-1.24600, 116.88700),
-    "Hotel Her":                   (-1.24800, 116.88900),
-    "Global Sport":                (-1.25000, 116.89100),
-    "Daun Village":                (-1.25200, 116.89300),
-    "RS Balikpapan Baru":          (-1.25400, 116.89500),
-    "Living Plaza":                (-1.25600, 116.89700),
-    "Majesty":                     (-1.25800, 116.89900),
-    "PLN MT Haryono":              (-1.26000, 116.90100),
-    "Masjid Shahibussalam":        (-1.26200, 116.90300),
-    "RS Siloam":                   (-1.26400, 116.90500),
-    "Bukit Damai Indah":           (-1.26600, 116.90700),
-    "Kelurahan Damai Baru":        (-1.26800, 116.90900),
-    "Dukcapil":                    (-1.27000, 116.91100),
-    "Beller":                      (-1.27200, 116.91300),
-    "B-Connect":                   (-1.27400, 116.91500),
-    "Kolam Mulawarman":            (-1.27600, 116.91700),
-    "SDN 012":                     (-1.27800, 116.91900),
-    "Kavling 8 Square":            (-1.28000, 116.92100),
-    "Siaga":                       (-1.28200, 116.92300),
-
-    # ── Koridor 2B ──
-    "Pegadaian":                   (-1.23300, 116.87400),
+ 
+    # ══ KORIDOR 1 ══════════════════════════════════════════════
+    # Pelabuhan Semayang → Bandara Sepinggan
+    # Jalur: pesisir barat → pusat kota → selatan → Kariangau → Bandara
+ 
+    "Pelabuhan Semayang":           (-1.2678,  116.8316),
+    "Melawai":                      (-1.2712,  116.8278),
+    "Lapangan Merdeka":             (-1.2691,  116.8296),
+    "RS Pertamina":                 (-1.2650,  116.8290),
+    "PNW":                          (-1.2620,  116.8310),
+    "Banua Patra":                  (-1.2608,  116.8302),
+    "Bank Indonesia":               (-1.2638,  116.8324),
+    "SD Bhayangkari":               (-1.2655,  116.8341),
+    "Kantor Pos":                   (-1.2669,  116.8358),
+    "Pasar Klandasan":              (-1.2681,  116.8375),
+    "Terminal Rasa":                (-1.2693,  116.8393),
+    "Blauran":                      (-1.2705,  116.8412),
+    "Gedung Parkir Klandasan":      (-1.2718,  116.8431),
+    "Simpang Plaza Balikpapan B":   (-1.2731,  116.8451),
+    "Simpang Plaza Balikpapan A":   (-1.2742,  116.8468),  # ← TRANSIT 2A & 2B
+    "BCA":                          (-1.2758,  116.8489),
+    "Bank Danamon":                 (-1.2771,  116.8507),
+    "Bulog":                        (-1.2785,  116.8524),
+    "Nuansa":                       (-1.2799,  116.8541),
+    "Balikpapan Permai":            (-1.2813,  116.8558),  # ← TRANSIT 2A
+    "Ace Hardware":                 (-1.2826,  116.8574),
+    "Samsat Markoni":               (-1.2840,  116.8591),
+    "DKK":                          (-1.2853,  116.8607),
+    "Pasar Baru":                   (-1.2866,  116.8623),
+    "Kehutanan":                    (-1.2879,  116.8640),
+    "Benakatai":                    (-1.2891,  116.8656),
+    "Al Ihsan":                     (-1.2904,  116.8672),
+    "SDN 006":                      (-1.2917,  116.8688),
+    "Mekar Sari":                   (-1.2930,  116.8704),  # ← TRANSIT 2A & 2B
+    "Gunung Pasir":                 (-1.2943,  116.8720),
+    "KPP Pratama Penajam":          (-1.2956,  116.8736),
+    "Puskib":                       (-1.2969,  116.8751),
+    "Pomal":                        (-1.2982,  116.8767),
+    "SDN 001":                      (-1.2995,  116.8782),
+    "Karang Jati":                  (-1.3007,  116.8797),
+    "Muara Rapak":                  (-1.3020,  116.8812),
+    "Ibnu Sina":                    (-1.3032,  116.8827),
+    "Plaza Rapak":                  (-1.3044,  116.8842),
+    "Strat":                        (-1.3056,  116.8857),
+    "SMAN 2 Balikpapan":            (-1.3068,  116.8871),
+    "Samsat Muara Rapak":           (-1.3080,  116.8885),
+    "SMPN 3 Balikpapan":            (-1.3092,  116.8899),
+    "Bengrah":                      (-1.2890,  116.9010),
+    "Inpres 4":                     (-1.2870,  116.8990),
+    "SMK Setia Budi":               (-1.2850,  116.8971),
+    "Pulau Indah":                  (-1.2831,  116.8952),
+    "Simpang Perumnas":             (-1.2812,  116.8933),
+    "SD Kartika V-3":               (-1.2658,  116.8914),
+    "Yon Zipur":                    (-1.2560,  116.8895),
+    "Perintis":                     (-1.2472,  116.8876),
+    "Perumahan Ramayana":           (-1.2384,  116.8856),
+    "Pemotongan Hewan":             (-1.2296,  116.8836),
+    "Graha Indah":                  (-1.2208,  116.8817),
+    "Masjid Santalia":              (-1.2120,  116.8797),
+    "Perum PGRI":                   (-1.2032,  116.8777),
+    "PT. PAC":                      (-1.1944,  116.8757),
+    "Perum Griya Kariangau":        (-1.1856,  116.8737),
+    "Puskesmas Kariangau":          (-1.1768,  116.8717),
+    "SMP 16":                       (-1.1680,  116.8697),
+    "SD 020":                       (-1.1592,  116.8677),
+    "PT Petrosea":                  (-1.1504,  116.8657),
+    "Kelurahan Kariangau":          (-1.1416,  116.8637),
+    "Pelabuhan Kariangau":          (-1.1328,  116.8617),
+    "Bandara Sepinggan":            (-1.2682,  116.8939),
+ 
+    # ══ KORIDOR 2A ═════════════════════════════════════════════
+    # Terminal Batu Ampar → Plaza Balikpapan via MT. Haryono
+    # Jalur: Terminal → Jl. Soekarno-Hatta → Jl. MT Haryono → Plaza
+ 
+    "Terminal Batu Ampar":          (-1.2315,  116.8720),  # ← TRANSIT 2A & 2B
+    "Sabulussalam":                 (-1.2340,  116.8752),
+    "Simpang Batu Ampar":           (-1.2362,  116.8779),
+    "Pasar Butun":                  (-1.2384,  116.8806),
+    "Al Auliya":                    (-1.2406,  116.8833),
+    "Pelangi Metro":                (-1.2428,  116.8860),
+    "RSKD":                         (-1.2450,  116.8887),
+    "Grand City":                   (-1.2472,  116.8914),
+    "Hotel Her":                    (-1.2494,  116.8941),
+    "Global Sport":                 (-1.2516,  116.8968),
+    "Daun Village":                 (-1.2538,  116.8995),
+    "RS Balikpapan Baru":           (-1.2560,  116.9022),
+    "Living Plaza":                 (-1.2582,  116.9049),
+    "Majesty":                      (-1.2604,  116.9076),
+    "PLN MT Haryono":               (-1.2626,  116.9103),
+    "Masjid Shahibussalam":         (-1.2648,  116.9130),
+    "RS Siloam":                    (-1.2670,  116.9157),
+    "Bukit Damai Indah":            (-1.2692,  116.9184),
+    "Kelurahan Damai Baru":         (-1.2714,  116.9211),
+    "Dukcapil":                     (-1.2736,  116.9238),
+    "Beller":                       (-1.2758,  116.9265),
+    "B-Connect":                    (-1.2780,  116.9292),
+    "Kolam Mulawarman":             (-1.2802,  116.9319),
+    "SDN 012":                      (-1.2824,  116.9346),
+    "Kavling 8 Square":             (-1.2845,  116.9195),
+    "Siaga":                        (-1.2855,  116.9050),
+    # "Balikpapan Permai" sudah di Koridor 1
+    # "Ace Hardware"      sudah di Koridor 1
+    # "Samsat Markoni"    sudah di Koridor 1
+    # "DKK"               sudah di Koridor 1
+    # "Pasar Baru"        sudah di Koridor 1
+    # "Simpang Plaza Balikpapan A" sudah di Koridor 1
+ 
+    # ══ KORIDOR 2B ═════════════════════════════════════════════
+    # Terminal Batu Ampar → Plaza Balikpapan via Rapak
+    # Jalur: Terminal → Jl. Ahmad Yani → Rapak → Plaza
+ 
+    "Pegadaian":                    (-1.2330,  116.8735),
+    # "Samsat Muara Rapak" sudah di Koridor 1
+    # "Plaza Rapak"        sudah di Koridor 1
+    # "Ibnu Sina"          sudah di Koridor 1
+    # "SMAN 2 Balikpapan"  sudah di Koridor 1
+    # "Strat"              sudah di Koridor 1
+    # "Muara Rapak"        sudah di Koridor 1
+    # "Karang Jati"        sudah di Koridor 1
+    # "SDN 001"            sudah di Koridor 1
+    # "Pomal"              sudah di Koridor 1
+    # "Puskib"             sudah di Koridor 1
+    # "KPP Pratama Penajam" sudah di Koridor 1
+    # "Gunung Pasir"       sudah di Koridor 1
+    # "SDN 006"            sudah di Koridor 1
+    # "Al Ihsan"           sudah di Koridor 1
+    # "Mekar Sari"         sudah di Koridor 1
+    # "Kehutanan"          sudah di Koridor 1
+    # "Benakatai"          sudah di Koridor 1
+    # "Simpang Plaza Balikpapan A" sudah di Koridor 1
 }
-
 # =========================================
 # Tarif BUs
 # =========================================

@@ -32,7 +32,6 @@ HALTE_KORIDOR_1 = [
     ("Kantor Pos",               ["Kantor Pos Balikpapan Kota"]),
     ("Pasar Klandasan",          ["Pasar Klandasan Balikpapan"]),
     ("Terminal Rasa",            ["Terminal Rasa Balikpapan", "Jalan Ahmad Yani Balikpapan"]),
-    ("Blauran",                  ["Blauran Balikpapan", "Jalan Blauran Balikpapan"]),
     ("Gedung Parkir Klandasan",  ["Gedung Parkir Klandasan Balikpapan"]),
     ("Simpang Plaza Balikpapan B", ["Plaza Balikpapan", "Mall Plaza Balikpapan"]),
     ("Simpang Plaza Balikpapan A", ["Simpang Plaza Balikpapan", "Plaza Balikpapan Mall"]),  # Titik transit 2A & 2B
