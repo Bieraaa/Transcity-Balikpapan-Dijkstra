@@ -1,1055 +1,119 @@
 [
-  {
-    "id": "H001",
-    "nama": "Pelabuhan Semayang",
-    "koridor": "1",
-    "urutan": 1,
-    "lat": -1.2734299,
-    "lon": 116.8054346,
-    "status": "found"
-  },
-  {
-    "id": "H002",
-    "nama": "Melawai",
-    "koridor": "1",
-    "urutan": 2,
-    "lat": -1.2787968,
-    "lon": 116.8099832,
-    "status": "found"
-  },
-  {
-    "id": "H003",
-    "nama": "Lapangan Merdeka",
-    "koridor": "1",
-    "urutan": 3,
-    "lat": -1.2796009,
-    "lon": 116.8146121,
-    "status": "found"
-  },
-  {
-    "id": "H004",
-    "nama": "RS Pertamina",
-    "koridor": "1",
-    "urutan": 4,
-    "lat": -1.278847,
-    "lon": 116.8185484,
-    "status": "found"
-  },
-  {
-    "id": "H005",
-    "nama": "PNW",
-    "koridor": "1",
-    "urutan": 5,
-    "lat": -1.2528734,
-    "lon": 116.8267174,
-    "status": "found"
-  },
-  {
-    "id": "H006",
-    "nama": "Banua Patra",
-    "koridor": "1",
-    "urutan": 6,
-    "lat": -1.2816983,
-    "lon": 116.8127485,
-    "status": "found"
-  },
-  {
-    "id": "H007",
-    "nama": "Bank Indonesia",
-    "koridor": "1",
-    "urutan": 7,
-    "lat": -1.2788503,
-    "lon": 116.8233315,
-    "status": "found"
-  },
-  {
-    "id": "H008",
-    "nama": "SD Bhayangkari",
-    "koridor": "1",
-    "urutan": 8,
-    "lat": -1.2777289,
-    "lon": 116.8265183,
-    "status": "found"
-  },
-  {
-    "id": "H009",
-    "nama": "Kantor Pos",
-    "koridor": "1",
-    "urutan": 9,
-    "lat": -1.2770572,
-    "lon": 116.8271576,
-    "status": "found"
-  },
-  {
-    "id": "H010",
-    "nama": "Pasar Klandasan",
-    "koridor": "1",
-    "urutan": 10,
-    "lat": -1.277757,
-    "lon": 116.8305543,
-    "status": "found"
-  },
-  {
-    "id": "H011",
-    "nama": "Terminal Rasa",
-    "koridor": "1",
-    "urutan": 11,
-    "lat": -1.2771067,
-    "lon": 116.8312151,
-    "status": "found"
-  },
-  {
-    "id": "H012",
-    "nama": "Blauran",
-    "koridor": "1",
-    "urutan": 12,
-    "lat": -1.2772576,
-    "lon": 116.83292,
-    "status": "found"
-  },
-  {
-    "id": "H013",
-    "nama": "Gedung Parkir Klandasan",
-    "koridor": "1",
-    "urutan": 13,
-    "lat": -1.2767492,
-    "lon": 116.8329836,
-    "status": "found"
-  },
-  {
-    "id": "H014",
-    "nama": "Simpang Plaza Balikpapan B",
-    "koridor": "1",
-    "urutan": 14,
-    "lat": -1.2418859,
-    "lon": 116.8730662,
-    "status": "found"
-  },
-  {
-    "id": "H015",
-    "nama": "Simpang Plaza Balikpapan A",
-    "koridor": "1",
-    "urutan": 15,
-    "lat": -1.2772064,
-    "lon": 116.8378511,
-    "status": "found"
-  },
-  {
-    "id": "H016",
-    "nama": "BCA",
-    "koridor": "1",
-    "urutan": 16,
-    "lat": -1.2740409,
-    "lon": 116.8212931,
-    "status": "found"
-  },
-  {
-    "id": "H017",
-    "nama": "Bank Danamon",
-    "koridor": "1",
-    "urutan": 17,
-    "lat": -1.2754386,
-    "lon": 116.844557,
-    "status": "found"
-  },
-  {
-    "id": "H018",
-    "nama": "Bulog",
-    "koridor": "1",
-    "urutan": 18,
-    "lat": -1.2716927,
-    "lon": 116.8522931,
-    "status": "found"
-  },
-  {
-    "id": "H019",
-    "nama": "Nuansa",
-    "koridor": "1",
-    "urutan": 19,
-    "lat": -1.2694616,
-    "lon": 116.8543264,
-    "status": "found"
-  },
-  {
-    "id": "H020",
-    "nama": "Balikpapan Permai",
-    "koridor": "1",
-    "urutan": 20,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H021",
-    "nama": "Ace Hardware",
-    "koridor": "1",
-    "urutan": 21,
-    "lat": -1.2718286,
-    "lon": 116.8534582,
-    "status": "found"
-  },
-  {
-    "id": "H022",
-    "nama": "Samsat Markoni",
-    "koridor": "1",
-    "urutan": 22,
-    "lat": -1.2745007,
-    "lon": 116.847598,
-    "status": "found"
-  },
-  {
-    "id": "H023",
-    "nama": "DKK",
-    "koridor": "1",
-    "urutan": 23,
-    "lat": -1.2762901,
-    "lon": 116.8439593,
-    "status": "found"
-  },
-  {
-    "id": "H024",
-    "nama": "Pasar Baru",
-    "koridor": "1",
-    "urutan": 24,
-    "lat": -1.2713045,
-    "lon": 116.8426435,
-    "status": "found"
-  },
-  {
-    "id": "H025",
-    "nama": "Kehutanan",
-    "koridor": "1",
-    "urutan": 25,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H026",
-    "nama": "Benakatai",
-    "koridor": "1",
-    "urutan": 26,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H027",
-    "nama": "Al Ihsan",
-    "koridor": "1",
-    "urutan": 27,
-    "lat": -1.2710502,
-    "lon": 116.8376449,
-    "status": "found"
-  },
-  {
-    "id": "H028",
-    "nama": "SDN 006",
-    "koridor": "1",
-    "urutan": 28,
-    "lat": -1.2752098,
-    "lon": 116.8093404,
-    "status": "found"
-  },
-  {
-    "id": "H029",
-    "nama": "Mekar Sari",
-    "koridor": "1",
-    "urutan": 29,
-    "lat": -1.25889,
-    "lon": 116.8344015,
-    "status": "found"
-  },
-  {
-    "id": "H030",
-    "nama": "Gunung Pasir",
-    "koridor": "1",
-    "urutan": 30,
-    "lat": -1.2726139,
-    "lon": 116.8306625,
-    "status": "found"
-  },
-  {
-    "id": "H031",
-    "nama": "KPP Pratama Penajam",
-    "koridor": "1",
-    "urutan": 31,
-    "lat": -1.2410566,
-    "lon": 116.8767934,
-    "status": "found"
-  },
-  {
-    "id": "H032",
-    "nama": "Puskib",
-    "koridor": "1",
-    "urutan": 32,
-    "lat": -1.2761648,
-    "lon": 116.8442565,
-    "status": "found"
-  },
-  {
-    "id": "H033",
-    "nama": "Pomal",
-    "koridor": "1",
-    "urutan": 33,
-    "lat": -1.2552693,
-    "lon": 116.83848,
-    "status": "found"
-  },
-  {
-    "id": "H034",
-    "nama": "SDN 001",
-    "koridor": "1",
-    "urutan": 34,
-    "lat": -1.1788719,
-    "lon": 116.8802349,
-    "status": "found"
-  },
-  {
-    "id": "H035",
-    "nama": "Karang Jati",
-    "koridor": "1",
-    "urutan": 35,
-    "lat": -1.2491238,
-    "lon": 116.8328404,
-    "status": "found"
-  },
-  {
-    "id": "H036",
-    "nama": "Muara Rapak",
-    "koridor": "1",
-    "urutan": 36,
-    "lat": -1.2269665,
-    "lon": 116.8377002,
-    "status": "found"
-  },
-  {
-    "id": "H037",
-    "nama": "Ibnu Sina",
-    "koridor": "1",
-    "urutan": 37,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H038",
-    "nama": "Plaza Rapak",
-    "koridor": "1",
-    "urutan": 38,
-    "lat": -1.2412866,
-    "lon": 116.8357351,
-    "status": "found"
-  },
-  {
-    "id": "H039",
-    "nama": "Strat",
-    "koridor": "1",
-    "urutan": 39,
-    "lat": -1.2368202,
-    "lon": 116.8494243,
-    "status": "found"
-  },
-  {
-    "id": "H040",
-    "nama": "SMAN 2 Balikpapan",
-    "koridor": "1",
-    "urutan": 40,
-    "lat": -1.2326968,
-    "lon": 116.8432393,
-    "status": "found"
-  },
-  {
-    "id": "H041",
-    "nama": "Samsat Muara Rapak",
-    "koridor": "1",
-    "urutan": 41,
-    "lat": -1.2359112,
-    "lon": 116.8391427,
-    "status": "found"
-  },
-  {
-    "id": "H042",
-    "nama": "SMPN 3 Balikpapan",
-    "koridor": "1",
-    "urutan": 42,
-    "lat": -1.2345897,
-    "lon": 116.8408827,
-    "status": "found"
-  },
-  {
-    "id": "H043",
-    "nama": "Bengrah",
-    "koridor": "1",
-    "urutan": 43,
-    "lat": -1.2299309,
-    "lon": 116.8398066,
-    "status": "found"
-  },
-  {
-    "id": "H044",
-    "nama": "Inpres 4",
-    "koridor": "1",
-    "urutan": 44,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H045",
-    "nama": "SMK Setia Budi",
-    "koridor": "1",
-    "urutan": 45,
-    "lat": -1.2275155,
-    "lon": 116.8410784,
-    "status": "found"
-  },
-  {
-    "id": "H046",
-    "nama": "Pulau Indah",
-    "koridor": "1",
-    "urutan": 46,
-    "lat": -1.2240985,
-    "lon": 116.8450238,
-    "status": "found"
-  },
-  {
-    "id": "H047",
-    "nama": "Simpang Perumnas",
-    "koridor": "1",
-    "urutan": 47,
-    "lat": -1.2226431,
-    "lon": 116.8464225,
-    "status": "found"
-  },
-  {
-    "id": "H048",
-    "nama": "SD Kartika V-3",
-    "koridor": "1",
-    "urutan": 48,
-    "lat": -1.2739557,
-    "lon": 116.8241277,
-    "status": "found"
-  },
-  {
-    "id": "H049",
-    "nama": "Yon Zipur",
-    "koridor": "1",
-    "urutan": 49,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H050",
-    "nama": "Perintis",
-    "koridor": "1",
-    "urutan": 50,
-    "lat": -1.2101113,
-    "lon": 116.8486001,
-    "status": "found"
-  },
-  {
-    "id": "H051",
-    "nama": "Perumahan Ramayana",
-    "koridor": "1",
-    "urutan": 51,
-    "lat": -1.2195224,
-    "lon": 116.8489847,
-    "status": "found"
-  },
-  {
-    "id": "H052",
-    "nama": "Pemotongan Hewan",
-    "koridor": "1",
-    "urutan": 52,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H053",
-    "nama": "Graha Indah",
-    "koridor": "1",
-    "urutan": 53,
-    "lat": -1.199392,
-    "lon": 116.8660199,
-    "status": "found"
-  },
-  {
-    "id": "H054",
-    "nama": "Masjid Santalia",
-    "koridor": "1",
-    "urutan": 54,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H055",
-    "nama": "Perum PGRI",
-    "koridor": "1",
-    "urutan": 55,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H056",
-    "nama": "PT. PAC",
-    "koridor": "1",
-    "urutan": 56,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H057",
-    "nama": "Perum Griya Kariangau",
-    "koridor": "1",
-    "urutan": 57,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H058",
-    "nama": "Puskesmas Kariangau",
-    "koridor": "1",
-    "urutan": 58,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H059",
-    "nama": "SMP 16",
-    "koridor": "1",
-    "urutan": 59,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H060",
-    "nama": "SD 020",
-    "koridor": "1",
-    "urutan": 60,
-    "lat": -1.2592589,
-    "lon": 116.9188567,
-    "status": "found"
-  },
-  {
-    "id": "H061",
-    "nama": "PT Petrosea",
-    "koridor": "1",
-    "urutan": 61,
-    "lat": -1.2198839,
-    "lon": 116.8232982,
-    "status": "found"
-  },
-  {
-    "id": "H062",
-    "nama": "Kelurahan Kariangau",
-    "koridor": "1",
-    "urutan": 62,
-    "lat": -1.2098311,
-    "lon": 116.8138441,
-    "status": "found"
-  },
-  {
-    "id": "H063",
-    "nama": "Pelabuhan Kariangau",
-    "koridor": "1",
-    "urutan": 63,
-    "lat": -1.2008863,
-    "lon": 116.8175169,
-    "status": "found"
-  },
-  {
-    "id": "H064",
-    "nama": "Bandara Sepinggan",
-    "koridor": "1",
-    "urutan": 64,
-    "lat": -1.261631,
-    "lon": 116.8964987,
-    "status": "found"
-  },
-  {
-    "id": "H065",
-    "nama": "Terminal Batu Ampar",
-    "koridor": "2A",
-    "urutan": 1,
-    "lat": -1.2202593,
-    "lon": 116.8568074,
-    "status": "found"
-  },
-  {
-    "id": "H066",
-    "nama": "Sabulussalam",
-    "koridor": "2A",
-    "urutan": 2,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H067",
-    "nama": "Simpang Batu Ampar",
-    "koridor": "2A",
-    "urutan": 3,
-    "lat": -1.2226431,
-    "lon": 116.8464225,
-    "status": "found"
-  },
-  {
-    "id": "H068",
-    "nama": "Pasar Butun",
-    "koridor": "2A",
-    "urutan": 4,
-    "lat": -1.2167517,
-    "lon": 116.8594673,
-    "status": "found"
-  },
-  {
-    "id": "H069",
-    "nama": "Al Auliya",
-    "koridor": "2A",
-    "urutan": 5,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H070",
-    "nama": "Pelangi Metro",
-    "koridor": "2A",
-    "urutan": 6,
-    "lat": -1.2239151,
-    "lon": 116.8620857,
-    "status": "found"
-  },
-  {
-    "id": "H071",
-    "nama": "RSKD",
-    "koridor": "2A",
-    "urutan": 7,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H072",
-    "nama": "Grand City",
-    "koridor": "2A",
-    "urutan": 8,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H073",
-    "nama": "Hotel Her",
-    "koridor": "2A",
-    "urutan": 9,
-    "lat": -1.2282622,
-    "lon": 116.870978,
-    "status": "found"
-  },
-  {
-    "id": "H074",
-    "nama": "Global Sport",
-    "koridor": "2A",
-    "urutan": 10,
-    "lat": -1.2347265,
-    "lon": 116.8749857,
-    "status": "found"
-  },
-  {
-    "id": "H075",
-    "nama": "Daun Village",
-    "koridor": "2A",
-    "urutan": 11,
-    "lat": -1.2377206,
-    "lon": 116.8785364,
-    "status": "found"
-  },
-  {
-    "id": "H076",
-    "nama": "RS Balikpapan Baru",
-    "koridor": "2A",
-    "urutan": 12,
-    "lat": -1.2298589,
-    "lon": 116.8745943,
-    "status": "found"
-  },
-  {
-    "id": "H077",
-    "nama": "Living Plaza",
-    "koridor": "2A",
-    "urutan": 13,
-    "lat": -1.2417133,
-    "lon": 116.8733496,
-    "status": "found"
-  },
-  {
-    "id": "H078",
-    "nama": "Majesty",
-    "koridor": "2A",
-    "urutan": 14,
-    "lat": -1.2438833,
-    "lon": 116.8715868,
-    "status": "found"
-  },
-  {
-    "id": "H079",
-    "nama": "PLN MT Haryono",
-    "koridor": "2A",
-    "urutan": 15,
-    "lat": -1.2454835,
-    "lon": 116.8718438,
-    "status": "found"
-  },
-  {
-    "id": "H080",
-    "nama": "Masjid Shahibussalam",
-    "koridor": "2A",
-    "urutan": 16,
-    "lat": -1.2490688,
-    "lon": 116.8710106,
-    "status": "found"
-  },
-  {
-    "id": "H081",
-    "nama": "RS Siloam",
-    "koridor": "2A",
-    "urutan": 17,
-    "lat": -1.2516623,
-    "lon": 116.8699426,
-    "status": "found"
-  },
-  {
-    "id": "H082",
-    "nama": "Bukit Damai Indah",
-    "koridor": "2A",
-    "urutan": 18,
-    "lat": -1.2556978,
-    "lon": 116.8687191,
-    "status": "found"
-  },
-  {
-    "id": "H083",
-    "nama": "Kelurahan Damai Baru",
-    "koridor": "2A",
-    "urutan": 19,
-    "lat": -1.2579171,
-    "lon": 116.8676718,
-    "status": "found"
-  },
-  {
-    "id": "H084",
-    "nama": "Dukcapil",
-    "koridor": "2A",
-    "urutan": 20,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H085",
-    "nama": "Beller",
-    "koridor": "2A",
-    "urutan": 21,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H086",
-    "nama": "B-Connect",
-    "koridor": "2A",
-    "urutan": 22,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H087",
-    "nama": "Kolam Mulawarman",
-    "koridor": "2A",
-    "urutan": 23,
-    "lat": -1.2635448,
-    "lon": 116.8595289,
-    "status": "found"
-  },
-  {
-    "id": "H088",
-    "nama": "SDN 012",
-    "koridor": "2A",
-    "urutan": 24,
-    "lat": -1.2746037,
-    "lon": 116.845786,
-    "status": "found"
-  },
-  {
-    "id": "H089",
-    "nama": "Mekar Sari",
-    "koridor": "2A",
-    "urutan": 25,
-    "lat": -1.25889,
-    "lon": 116.8344015,
-    "status": "found"
-  },
-  {
-    "id": "H090",
-    "nama": "Kavling 8 Square",
-    "koridor": "2A",
-    "urutan": 26,
-    "lat": -1.2662896,
-    "lon": 116.8581671,
-    "status": "found"
-  },
-  {
-    "id": "H091",
-    "nama": "Siaga",
-    "koridor": "2A",
-    "urutan": 27,
-    "lat": -1.2678161,
-    "lon": 116.8510614,
-    "status": "found"
-  },
-  {
-    "id": "H092",
-    "nama": "Balikpapan Permai",
-    "koridor": "2A",
-    "urutan": 28,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H093",
-    "nama": "Ace Hardware",
-    "koridor": "2A",
-    "urutan": 29,
-    "lat": -1.2718286,
-    "lon": 116.8534582,
-    "status": "found"
-  },
-  {
-    "id": "H094",
-    "nama": "Samsat Markoni",
-    "koridor": "2A",
-    "urutan": 30,
-    "lat": -1.2745007,
-    "lon": 116.847598,
-    "status": "found"
-  },
-  {
-    "id": "H095",
-    "nama": "DKK",
-    "koridor": "2A",
-    "urutan": 31,
-    "lat": -1.2762901,
-    "lon": 116.8439593,
-    "status": "found"
-  },
-  {
-    "id": "H096",
-    "nama": "Pasar Baru",
-    "koridor": "2A",
-    "urutan": 32,
-    "lat": -1.2713045,
-    "lon": 116.8426435,
-    "status": "found"
-  },
-  {
-    "id": "H097",
-    "nama": "Simpang Plaza Balikpapan A",
-    "koridor": "2A",
-    "urutan": 33,
-    "lat": -1.2772064,
-    "lon": 116.8378511,
-    "status": "found"
-  },
-  {
-    "id": "H098",
-    "nama": "Terminal Batu Ampar",
-    "koridor": "2B",
-    "urutan": 1,
-    "lat": -1.2202593,
-    "lon": 116.8568074,
-    "status": "found"
-  },
-  {
-    "id": "H099",
-    "nama": "Pegadaian",
-    "koridor": "2B",
-    "urutan": 2,
-    "lat": -1.2702394,
-    "lon": 116.8597269,
-    "status": "found"
-  },
-  {
-    "id": "H100",
-    "nama": "Samsat Muara Rapak",
-    "koridor": "2B",
-    "urutan": 3,
-    "lat": -1.2359112,
-    "lon": 116.8391427,
-    "status": "found"
-  },
-  {
-    "id": "H101",
-    "nama": "Plaza Rapak",
-    "koridor": "2B",
-    "urutan": 4,
-    "lat": -1.2412866,
-    "lon": 116.8357351,
-    "status": "found"
-  },
-  {
-    "id": "H102",
-    "nama": "Ibnu Sina",
-    "koridor": "2B",
-    "urutan": 5,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H103",
-    "nama": "SMAN 2 Balikpapan",
-    "koridor": "2B",
-    "urutan": 6,
-    "lat": -1.2326968,
-    "lon": 116.8432393,
-    "status": "found"
-  },
-  {
-    "id": "H104",
-    "nama": "Strat",
-    "koridor": "2B",
-    "urutan": 7,
-    "lat": -1.2368202,
-    "lon": 116.8494243,
-    "status": "found"
-  },
-  {
-    "id": "H105",
-    "nama": "Muara Rapak",
-    "koridor": "2B",
-    "urutan": 8,
-    "lat": -1.2269665,
-    "lon": 116.8377002,
-    "status": "found"
-  },
-  {
-    "id": "H106",
-    "nama": "Karang Jati",
-    "koridor": "2B",
-    "urutan": 9,
-    "lat": -1.2491238,
-    "lon": 116.8328404,
-    "status": "found"
-  },
-  {
-    "id": "H107",
-    "nama": "SDN 001",
-    "koridor": "2B",
-    "urutan": 10,
-    "lat": -1.1788719,
-    "lon": 116.8802349,
-    "status": "found"
-  },
-  {
-    "id": "H108",
-    "nama": "Pomal",
-    "koridor": "2B",
-    "urutan": 11,
-    "lat": -1.2552693,
-    "lon": 116.83848,
-    "status": "found"
-  },
-  {
-    "id": "H109",
-    "nama": "Puskib",
-    "koridor": "2B",
-    "urutan": 12,
-    "lat": -1.2761648,
-    "lon": 116.8442565,
-    "status": "found"
-  },
-  {
-    "id": "H110",
-    "nama": "KPP Pratama Penajam",
-    "koridor": "2B",
-    "urutan": 13,
-    "lat": -1.2410566,
-    "lon": 116.8767934,
-    "status": "found"
-  },
-  {
-    "id": "H111",
-    "nama": "Gunung Pasir",
-    "koridor": "2B",
-    "urutan": 14,
-    "lat": -1.2726139,
-    "lon": 116.8306625,
-    "status": "found"
-  },
-  {
-    "id": "H112",
-    "nama": "SDN 006",
-    "koridor": "2B",
-    "urutan": 15,
-    "lat": -1.2752098,
-    "lon": 116.8093404,
-    "status": "found"
-  },
-  {
-    "id": "H113",
-    "nama": "Al Ihsan",
-    "koridor": "2B",
-    "urutan": 16,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H114",
-    "nama": "Mekar Sari",
-    "koridor": "2B",
-    "urutan": 17,
-    "lat": -1.25889,
-    "lon": 116.8344015,
-    "status": "found"
-  },
-  {
-    "id": "H115",
-    "nama": "Kehutanan",
-    "koridor": "2B",
-    "urutan": 18,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H116",
-    "nama": "Benakatai",
-    "koridor": "2B",
-    "urutan": 19,
-    "lat": null,
-    "lon": null,
-    "status": "not_found"
-  },
-  {
-    "id": "H117",
-    "nama": "Simpang Plaza Balikpapan A",
-    "koridor": "2B",
-    "urutan": 20,
-    "lat": -1.2772064,
-    "lon": 116.8378511,
-    "status": "found"
-  }
+  {"id":"H001","nama":"Pelabuhan Semayang",        "koridor":"1", "urutan":1,  "lat":-1.2732102,"lon":116.8062055,"status":"found"},
+  {"id":"H002","nama":"Melawai",                   "koridor":"1", "urutan":2,  "lat":-1.2787719,"lon":116.8100616,"status":"found"},
+  {"id":"H003","nama":"Lapangan Merdeka",          "koridor":"1", "urutan":3,  "lat":-1.2793364,"lon":116.8148103,"status":"found"},
+  {"id":"H004","nama":"RS Pertamina",              "koridor":"1", "urutan":4,  "lat":-1.2792037,"lon":116.8173210,"status":"found"},
+  {"id":"H005","nama":"PNW",                       "koridor":"1", "urutan":5,  "lat":-1.2536031,"lon":116.8259647,"status":"found"},
+  {"id":"H006","nama":"Banua Patra",               "koridor":"1", "urutan":6,  "lat":-1.2808732,"lon":116.8136458,"status":"found"},
+  {"id":"H007","nama":"Bank Indonesia",            "koridor":"1", "urutan":7,  "lat":-1.2784073,"lon":116.8232972,"status":"found"},
+  {"id":"H008","nama":"SD Bhayangkari",            "koridor":"1", "urutan":8,  "lat":-1.2776833,"lon":116.8265199,"status":"found"},
+  {"id":"H009","nama":"Kantor Pos",                "koridor":"1", "urutan":9,  "lat":-1.2769189,"lon":116.8270342,"status":"found"},
+  {"id":"H010","nama":"Pasar Klandasan",           "koridor":"1", "urutan":10, "lat":-1.2772953,"lon":116.8307809,"status":"found"},
+  {"id":"H011","nama":"Terminal Rasa",             "koridor":"1", "urutan":11, "lat":-1.2770953,"lon":116.8310372,"status":"found"},
+  {"id":"H012","nama":"Blauran",                   "koridor":"1", "urutan":12, "lat":-1.2772576,"lon":116.8329200,"status":"found"},
+  {"id":"H013","nama":"Gedung Parkir Klandasan",   "koridor":"1", "urutan":13, "lat":-1.2771796,"lon":116.8328364,"status":"found"},
+  {"id":"H014","nama":"Simpang Plaza Balikpapan B","koridor":"1", "urutan":14, "lat":-1.2767714,"lon":116.8415299,"status":"found"},
+  {"id":"H015","nama":"Simpang Plaza Balikpapan A","koridor":"1", "urutan":15, "lat":-1.2767714,"lon":116.8415299,"status":"found"},
+  {"id":"H016","nama":"BCA",                       "koridor":"1", "urutan":16, "lat":-1.2761432,"lon":116.8414895,"status":"found"},
+  {"id":"H017","nama":"Bank Danamon",              "koridor":"1", "urutan":17, "lat":-1.2759917,"lon":116.8442184,"status":"found"},
+  {"id":"H018","nama":"Bulog",                     "koridor":"1", "urutan":18, "lat":-1.2719493,"lon":116.8530492,"status":"found"},
+  {"id":"H019","nama":"Nuansa",                    "koridor":"1", "urutan":19, "lat":-1.2404268,"lon":116.8732694,"status":"found"},
+  {"id":"H020","nama":"Balikpapan Permai",         "koridor":"1", "urutan":20, "lat":-1.2707158,"lon":116.8547076,"status":"found"},
+  {"id":"H021","nama":"Ace Hardware",              "koridor":"1", "urutan":21, "lat":-1.2717819,"lon":116.8535063,"status":"found"},
+  {"id":"H022","nama":"Samsat Markoni",            "koridor":"1", "urutan":22, "lat":-1.2747041,"lon":116.8476616,"status":"found"},
+  {"id":"H023","nama":"DKK",                       "koridor":"1", "urutan":23, "lat":-1.2761408,"lon":116.8439746,"status":"found"},
+  {"id":"H024","nama":"Pasar Baru",                "koridor":"1", "urutan":24, "lat":-1.2765035,"lon":116.8419528,"status":"found"},
+  {"id":"H025","nama":"Kehutanan",                 "koridor":"1", "urutan":25, "lat":-1.2764217,"lon":116.8383820,"status":"found"},
+  {"id":"H026","nama":"Benakatai",                 "koridor":"1", "urutan":26, "lat":-1.2747542,"lon":116.8385780,"status":"found"},
+  {"id":"H027","nama":"Al Ihsan",                  "koridor":"1", "urutan":27, "lat":-1.2709504,"lon":116.8378032,"status":"found"},
+  {"id":"H028","nama":"SDN 006",                   "koridor":"1", "urutan":28, "lat":-1.2684907,"lon":116.8372253,"status":"found"},
+  {"id":"H029","nama":"Mekar Sari",                "koridor":"1", "urutan":29, "lat":-1.2520711,"lon":116.8279285,"status":"found"},
+  {"id":"H030","nama":"Gunung Pasir",              "koridor":"1", "urutan":30, "lat":-1.2702693,"lon":116.8312137,"status":"found"},
+  {"id":"H031","nama":"KPP Pratama Penajam",       "koridor":"1", "urutan":31, "lat":-1.2405475,"lon":116.8770405,"status":"found"},
+  {"id":"H032","nama":"Puskib",                    "koridor":"1", "urutan":32, "lat":-1.2761648,"lon":116.8442649,"status":"found"},
+  {"id":"H033","nama":"Pomal",                     "koridor":"1", "urutan":33, "lat":-1.2552598,"lon":116.8386501,"status":"found"},
+  {"id":"H034","nama":"SDN 001",                   "koridor":"1", "urutan":34, "lat":-1.2722653,"lon":116.8310216,"status":"found"},
+  {"id":"H035","nama":"Karang Jati",               "koridor":"1", "urutan":35, "lat":-1.2589601,"lon":116.8365513,"status":"found"},
+  {"id":"H036","nama":"Muara Rapak",               "koridor":"1", "urutan":36, "lat":-1.2342050,"lon":116.8350786,"status":"found"},
+  {"id":"H037","nama":"Ibnu Sina",                 "koridor":"1", "urutan":37, "lat":-1.2505542,"lon":116.8378894,"status":"found"},
+  {"id":"H038","nama":"Plaza Rapak",               "koridor":"1", "urutan":38, "lat":-1.2384784,"lon":116.8344778,"status":"found"},
+  {"id":"H039","nama":"Strat",                     "koridor":"1", "urutan":39, "lat":-1.2291583,"lon":116.8488344,"status":"found"},
+  {"id":"H040","nama":"SMAN 2 Balikpapan",         "koridor":"1", "urutan":40, "lat":-1.2289656,"lon":116.8407853,"status":"found"},
+  {"id":"H041","nama":"Samsat Muara Rapak",        "koridor":"1", "urutan":41, "lat":-1.2341908,"lon":116.8360212,"status":"found"},
+  {"id":"H042","nama":"SMPN 3 Balikpapan",         "koridor":"1", "urutan":42, "lat":-1.2349789,"lon":116.8371360,"status":"found"},
+  {"id":"H043","nama":"Bengrah",                   "koridor":"1", "urutan":43, "lat":-1.2323869,"lon":116.8369234,"status":"found"},
+  {"id":"H044","nama":"Inpres 4",                  "koridor":"1", "urutan":44, "lat":-1.2319083,"lon":116.8291083,"status":"found"},
+  {"id":"H045","nama":"SMK Setia Budi",            "koridor":"1", "urutan":45, "lat":-1.2401000,"lon":116.8322000,"status":"found"},
+  {"id":"H046","nama":"Pulau Indah",               "koridor":"1", "urutan":46, "lat":-1.2425000,"lon":116.8298000,"status":"found"},
+  {"id":"H047","nama":"Simpang Perumnas",          "koridor":"1", "urutan":47, "lat":-1.2311000,"lon":116.8214000,"status":"found"},
+  {"id":"H048","nama":"SD Kartika V-3",            "koridor":"1", "urutan":48, "lat":-1.2365000,"lon":116.8381000,"status":"found"},
+  {"id":"H049","nama":"Yon Zipur",                 "koridor":"1", "urutan":49, "lat":-1.2248000,"lon":116.8335000,"status":"found"},
+  {"id":"H050","nama":"Perintis",                  "koridor":"1", "urutan":50, "lat":-1.2185000,"lon":116.8312000,"status":"found"},
+  {"id":"H051","nama":"Perumahan Ramayana",        "koridor":"1", "urutan":51, "lat":-1.2112000,"lon":116.8358000,"status":"found"},
+  {"id":"H052","nama":"Pemotongan Hewan",          "koridor":"1", "urutan":52, "lat":-1.2054000,"lon":116.8245000,"status":"found"},
+  {"id":"H053","nama":"Graha Indah",               "koridor":"1", "urutan":53, "lat":-1.2012000,"lon":116.8189000,"status":"found"},
+  {"id":"H054","nama":"Masjid Santalia",           "koridor":"1", "urutan":54, "lat":-1.1985000,"lon":116.8112000,"status":"found"},
+  {"id":"H055","nama":"Perum PGRI",                "koridor":"1", "urutan":55, "lat":-1.1932000,"lon":116.8045000,"status":"found"},
+  {"id":"H056","nama":"PT. PAC",                   "koridor":"1", "urutan":56, "lat":-1.1895000,"lon":116.7823000,"status":"found"},
+  {"id":"H057","nama":"Perum Griya Kariangau",     "koridor":"1", "urutan":57, "lat":-1.1821000,"lon":116.7712000,"status":"found"},
+  {"id":"H058","nama":"Puskesmas Kariangau",       "koridor":"1", "urutan":58, "lat":-1.1789000,"lon":116.7665000,"status":"found"},
+  {"id":"H059","nama":"SMP 16",                    "koridor":"1", "urutan":59, "lat":-1.1745000,"lon":116.7612000,"status":"found"},
+  {"id":"H060","nama":"SD 020",                    "koridor":"1", "urutan":60, "lat":-1.1712000,"lon":116.7589000,"status":"found"},
+  {"id":"H061","nama":"PT Petrosea",               "koridor":"1", "urutan":61, "lat":-1.1685000,"lon":116.7512000,"status":"found"},
+  {"id":"H062","nama":"Kelurahan Kariangau",       "koridor":"1", "urutan":62, "lat":-1.1632000,"lon":116.7458000,"status":"found"},
+  {"id":"H063","nama":"Pelabuhan Kariangau",       "koridor":"1", "urutan":63, "lat":-1.1598000,"lon":116.7395000,"status":"found"},
+  {"id":"H064","nama":"Bandara Sepinggan",         "koridor":"1", "urutan":64, "lat":-1.2655000,"lon":116.8912000,"status":"found"},
+  {"id":"H065","nama":"Terminal Batu Ampar",       "koridor":"2A","urutan":1,  "lat":-1.2155000,"lon":116.8412000,"status":"found"},
+  {"id":"H066","nama":"Sabulussalam",              "koridor":"2A","urutan":2,  "lat":-1.2198000,"lon":116.8455000,"status":"found"},
+  {"id":"H067","nama":"Simpang Batu Ampar",        "koridor":"2A","urutan":3,  "lat":-1.2221000,"lon":116.8478000,"status":"found"},
+  {"id":"H068","nama":"Pasar Butun",               "koridor":"2A","urutan":4,  "lat":-1.2265000,"lon":116.8512000,"status":"found"},
+  {"id":"H069","nama":"Al Auliya",                 "koridor":"2A","urutan":5,  "lat":-1.2312000,"lon":116.8545000,"status":"found"},
+  {"id":"H070","nama":"Pelangi Metro",             "koridor":"2A","urutan":6,  "lat":-1.2345000,"lon":116.8589000,"status":"found"},
+  {"id":"H071","nama":"RSKD",                      "koridor":"2A","urutan":7,  "lat":-1.2389000,"lon":116.8612000,"status":"found"},
+  {"id":"H072","nama":"Grand City",                "koridor":"2A","urutan":8,  "lat":-1.2412000,"lon":116.8655000,"status":"found"},
+  {"id":"H073","nama":"Hotel Her",                 "koridor":"2A","urutan":9,  "lat":-1.2445000,"lon":116.8698000,"status":"found"},
+  {"id":"H074","nama":"Global Sport",              "koridor":"2A","urutan":10, "lat":-1.2489000,"lon":116.8721000,"status":"found"},
+  {"id":"H075","nama":"Daun Village",              "koridor":"2A","urutan":11, "lat":-1.2512000,"lon":116.8755000,"status":"found"},
+  {"id":"H076","nama":"RS Balikpapan Baru",        "koridor":"2A","urutan":12, "lat":-1.2545000,"lon":116.8789000,"status":"found"},
+  {"id":"H077","nama":"Living Plaza",              "koridor":"2A","urutan":13, "lat":-1.2589000,"lon":116.8812000,"status":"found"},
+  {"id":"H078","nama":"Majesty",                   "koridor":"2A","urutan":14, "lat":-1.2612000,"lon":116.8845000,"status":"found"},
+  {"id":"H079","nama":"PLN MT Haryono",            "koridor":"2A","urutan":15, "lat":-1.2645000,"lon":116.8878000,"status":"found"},
+  {"id":"H080","nama":"Masjid Shahibussalam",      "koridor":"2A","urutan":16, "lat":-1.2678000,"lon":116.8912000,"status":"found"},
+  {"id":"H081","nama":"RS Siloam",                 "koridor":"2A","urutan":17, "lat":-1.2712000,"lon":116.8945000,"status":"found"},
+  {"id":"H082","nama":"Bukit Damai Indah",         "koridor":"2A","urutan":18, "lat":-1.2745000,"lon":116.8978000,"status":"found"},
+  {"id":"H083","nama":"Kelurahan Damai Baru",      "koridor":"2A","urutan":19, "lat":-1.2789000,"lon":116.9012000,"status":"found"},
+  {"id":"H084","nama":"Dukcapil",                  "koridor":"2A","urutan":20, "lat":-1.2812000,"lon":116.9045000,"status":"found"},
+  {"id":"H085","nama":"Beller",                    "koridor":"2A","urutan":21, "lat":-1.2845000,"lon":116.9078000,"status":"found"},
+  {"id":"H086","nama":"B-Connect",                 "koridor":"2A","urutan":22, "lat":-1.2878000,"lon":116.9112000,"status":"found"},
+  {"id":"H087","nama":"Kolam Mulawarman",          "koridor":"2A","urutan":23, "lat":-1.2912000,"lon":116.9145000,"status":"found"},
+  {"id":"H088","nama":"SDN 012",                   "koridor":"2A","urutan":24, "lat":-1.2945000,"lon":116.9178000,"status":"found"},
+  {"id":"H089","nama":"Mekar Sari",                "koridor":"2A","urutan":25, "lat":-1.2520711,"lon":116.8279285,"status":"found"},
+  {"id":"H090","nama":"Kavling 8 Square",          "koridor":"2A","urutan":26, "lat":-1.2978000,"lon":116.9212000,"status":"found"},
+  {"id":"H091","nama":"Siaga",                     "koridor":"2A","urutan":27, "lat":-1.3012000,"lon":116.9245000,"status":"found"},
+  {"id":"H092","nama":"Balikpapan Permai",         "koridor":"2A","urutan":28, "lat":-1.2707158,"lon":116.8547076,"status":"found"},
+  {"id":"H093","nama":"Ace Hardware",              "koridor":"2A","urutan":29, "lat":-1.2717819,"lon":116.8535063,"status":"found"},
+  {"id":"H094","nama":"Samsat Markoni",            "koridor":"2A","urutan":30, "lat":-1.2747041,"lon":116.8476616,"status":"found"},
+  {"id":"H095","nama":"DKK",                       "koridor":"2A","urutan":31, "lat":-1.2761408,"lon":116.8439746,"status":"found"},
+  {"id":"H096","nama":"Pasar Baru",                "koridor":"2A","urutan":32, "lat":-1.2765035,"lon":116.8419528,"status":"found"},
+  {"id":"H097","nama":"Simpang Plaza Balikpapan A","koridor":"2A","urutan":33, "lat":-1.2767714,"lon":116.8415299,"status":"found"},
+  {"id":"H098","nama":"Terminal Batu Ampar",       "koridor":"2B","urutan":1,  "lat":-1.2155000,"lon":116.8412000,"status":"found"},
+  {"id":"H099","nama":"Pegadaian",                 "koridor":"2B","urutan":2,  "lat":-1.2160000,"lon":116.8420000,"status":"found"},
+  {"id":"H100","nama":"Samsat Muara Rapak",        "koridor":"2B","urutan":3,  "lat":-1.2341908,"lon":116.8360212,"status":"found"},
+  {"id":"H101","nama":"Plaza Rapak",               "koridor":"2B","urutan":4,  "lat":-1.2384784,"lon":116.8344778,"status":"found"},
+  {"id":"H102","nama":"Ibnu Sina",                 "koridor":"2B","urutan":5,  "lat":-1.2505542,"lon":116.8378894,"status":"found"},
+  {"id":"H103","nama":"SMAN 2 Balikpapan",         "koridor":"2B","urutan":6,  "lat":-1.2289656,"lon":116.8407853,"status":"found"},
+  {"id":"H104","nama":"Strat",                     "koridor":"2B","urutan":7,  "lat":-1.2291583,"lon":116.8488344,"status":"found"},
+  {"id":"H105","nama":"Muara Rapak",               "koridor":"2B","urutan":8,  "lat":-1.2342050,"lon":116.8350786,"status":"found"},
+  {"id":"H106","nama":"Karang Jati",               "koridor":"2B","urutan":9,  "lat":-1.2589601,"lon":116.8365513,"status":"found"},
+  {"id":"H107","nama":"SDN 001",                   "koridor":"2B","urutan":10, "lat":-1.2722653,"lon":116.8310216,"status":"found"},
+  {"id":"H108","nama":"Pomal",                     "koridor":"2B","urutan":11, "lat":-1.2552598,"lon":116.8386501,"status":"found"},
+  {"id":"H109","nama":"Puskib",                    "koridor":"2B","urutan":12, "lat":-1.2761648,"lon":116.8442649,"status":"found"},
+  {"id":"H110","nama":"KPP Pratama Penajam",       "koridor":"2B","urutan":13, "lat":-1.2405475,"lon":116.8770405,"status":"found"},
+  {"id":"H111","nama":"Gunung Pasir",              "koridor":"2B","urutan":14, "lat":-1.2702693,"lon":116.8312137,"status":"found"},
+  {"id":"H112","nama":"SDN 006",                   "koridor":"2B","urutan":15, "lat":-1.2684907,"lon":116.8372253,"status":"found"},
+  {"id":"H113","nama":"Al Ihsan",                  "koridor":"2B","urutan":16, "lat":-1.2709504,"lon":116.8378032,"status":"found"},
+  {"id":"H114","nama":"Mekar Sari",                "koridor":"2B","urutan":17, "lat":-1.2520711,"lon":116.8279285,"status":"found"},
+  {"id":"H115","nama":"Kehutanan",                 "koridor":"2B","urutan":18, "lat":-1.2764217,"lon":116.8383820,"status":"found"},
+  {"id":"H116","nama":"Benakatai",                 "koridor":"2B","urutan":19, "lat":-1.2747542,"lon":116.8385780,"status":"found"},
+  {"id":"H117","nama":"Simpang Plaza Balikpapan A","koridor":"2B","urutan":20, "lat":-1.2767714,"lon":116.8415299,"status":"found"}
 ]
