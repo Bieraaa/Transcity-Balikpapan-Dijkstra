@@ -36,25 +36,20 @@ class RuteResult:
     total_biaya:     int  = 0
     detail_biaya:    str  = ""
     tipe_penumpang:  str  = "Umum"
-    pesan:           str  = ""   # ← field tunggal (bug duplikat diperbaiki)
+    pesan:           str  = ""  
+    total_km :       float = 0.0
+    segmen_km :      list = field(default_factory=list)
 
 
 # ══════════════════════════════════════════════════════════════
-# Algoritma Dijkstra inti
+# Algoritma Dijkstra 
 # ══════════════════════════════════════════════════════════════
 
 def _dijkstra_raw(graph: dict, id_asal: str) -> tuple[dict, dict]:
-    """
-    Jalankan Dijkstra dari id_asal.
-
-    Returns:
-        dist : {node: jarak_terpendek}
-        prev : {node: (node_sebelumnya, koridor_edge)}
-    """
     dist = {node: float("inf") for node in graph}
     prev = {node: None for node in graph}
-    dist[id_asal] = 0
-    pq = [(0, id_asal)]
+    dist[id_asal] = 0.0
+    pq = [(0.0, id_asal)]
 
     while pq:
         jarak_skrg, node = heapq.heappop(pq)
@@ -72,14 +67,7 @@ def _dijkstra_raw(graph: dict, id_asal: str) -> tuple[dict, dict]:
     return dist, prev
 
 
-def _rekonstruksi_path(prev: dict, id_asal: str, id_tujuan: str) -> list[tuple]:
-    """
-    Rekonstruksi path dari dict prev.
-
-    Returns:
-        list of (halte_id, koridor_edge_menuju_halte_ini)
-        Elemen pertama adalah asal dengan koridor None.
-    """
+def _rekonstruksi_path(prev: dict,id_tujuan: str) -> list[tuple]:
     path = []
     node = id_tujuan
     while node is not None:
@@ -95,13 +83,6 @@ def _rekonstruksi_path(prev: dict, id_asal: str, id_tujuan: str) -> list[tuple]:
 
 
 def _deteksi_transit(path: list[tuple], id_ke_halte: dict) -> list[dict]:
-    """
-    Deteksi perpindahan koridor di sepanjang path.
-
-    Perpindahan koridor terjadi ketika edge_koridor berubah dari
-    nilai non-TRANSIT sebelumnya ke nilai non-TRANSIT berikutnya.
-    Titik transit adalah halte tepat SEBELUM perubahan itu.
-    """
     transit    = []
     koridor_aktif = None
 
@@ -124,6 +105,27 @@ def _deteksi_transit(path: list[tuple], id_ke_halte: dict) -> list[dict]:
 
     return transit
 
+def _deteksi_rute_memutar(
+        rute_id: list[str],
+        halte_list: list,
+        koridor_dipakai: list[str],
+) -> str| None:
+    
+    if len(koridor_dipakai) != 1:
+        return None
+    
+    kor = koridor_dipakai[0]
+    total = sum(1 for h in halte_list if h["koridor"] == kor )
+    dipakai = len(rute_id)
+
+    if total > 0 and dipakai / total > 0.75:
+        return(
+            f"⚠️  Rute ini melewati {dipakai} dari {total} halte Koridor {kor} "
+            f"({dipakai/total*100:.0f}%). "
+            f"Kemungkinan bus perlu menempuh hampir seluruh jalur koridor. "
+            f"Pastikan asal dan tujuan berada di arah yang sama."
+        )
+    return None
 
 # ══════════════════════════════════════════════════════════════
 # Fungsi utama
@@ -136,20 +138,8 @@ def cari_rute(
     id_tujuan:  str,
     pelajar:    bool = False,
 ) -> RuteResult:
-    """
-    Cari rute tercepat dari id_asal ke id_tujuan menggunakan Dijkstra.
 
-    Args:
-        graph      : adjacency-list dari graphBuilder.build_graph()
-        halte_list : list halte dari halte.json
-        id_asal    : ID halte asal  (contoh "H001")
-        id_tujuan  : ID halte tujuan (contoh "H064")
-        pelajar    : True → tarif pelajar Rp 2.000/koridor
-
-    Returns:
-        RuteResult lengkap dengan waktu, biaya, transit, dan urutan halte.
-    """
-    from Djikstra.graphBuilder import hitung_biaya
+    from Djikstra.graphBuilder import hitung_biaya, hitung_jarak_rute
 
     id_ke_halte = {h["id"]: h for h in halte_list}
 
@@ -159,19 +149,19 @@ def cari_rute(
 
     if id_asal not in graph:
         return RuteResult(False, id_asal, id_tujuan, nama(id_asal), nama(id_tujuan),
-                          [], [], 0, 0, [], [],
-                          pesan=f"ID '{id_asal}' tidak ditemukan dalam graf.")
+                        [], [], 0, 0, [], [],
+                        pesan=f"ID '{id_asal}' tidak ditemukan dalam graf.")
 
     if id_tujuan not in graph:
         return RuteResult(False, id_asal, id_tujuan, nama(id_asal), nama(id_tujuan),
-                          [], [], 0, 0, [], [],
-                          pesan=f"ID '{id_tujuan}' tidak ditemukan dalam graf.")
+                        [], [], 0, 0, [], [],
+                        pesan=f"ID '{id_tujuan}' tidak ditemukan dalam graf.")
 
     if id_asal == id_tujuan:
         n = nama(id_asal)
         return RuteResult(True, id_asal, id_tujuan, n, n,
-                          [id_asal], [n], 0, 1, [], [],
-                          pesan="Asal dan tujuan sama.")
+                        [id_asal], [n], 0, 1, [], [],
+                        pesan="Asal dan tujuan sama.")
 
     # ── Jalankan Dijkstra ─────────────────────────────────────
     dist, prev = _dijkstra_raw(graph, id_asal)
@@ -184,7 +174,7 @@ def cari_rute(
         )
 
     # ── Rekonstruksi & analisis ───────────────────────────────
-    path      = _rekonstruksi_path(prev, id_asal, id_tujuan)
+    path      =  _rekonstruksi_path(prev, id_tujuan)
     rute_id   = [p[0] for p in path]
     rute_nama = [id_ke_halte.get(p[0], {}).get("nama", p[0]) for p in path]
 
@@ -204,6 +194,9 @@ def cari_rute(
     ))
 
     biaya = hitung_biaya(koridor_dipakai, pelajar=pelajar)
+    jarak_info = hitung_jarak_rute(rute_id, halte_list)
+    pesan_memutar = _deteksi_rute_memutar(rute_id, halte_list,koridor_dipakai)
+    waktu_total = round(dist[id_tujuan], 1)
 
     return RuteResult(
         ditemukan       = True,
@@ -220,4 +213,7 @@ def cari_rute(
         total_biaya     = biaya["total_biaya"],
         detail_biaya    = biaya["detail"],
         tipe_penumpang  = biaya["tipe"],
+        pesan           = pesan_memutar or "",
+        total_km        = jarak_info["total_km"],
+        segmen_km       = jarak_info["segmen"],
     )
