@@ -63,6 +63,7 @@
   {"id":"H062","nama":"Kelurahan Kariangau",       "koridor":"1", "urutan":62, "lat":-1.1632000,"lon":116.7458000,"status":"found"},
   {"id":"H063","nama":"Pelabuhan Kariangau",       "koridor":"1", "urutan":63, "lat":-1.1598000,"lon":116.7395000,"status":"found"},
   {"id":"H064","nama":"Bandara Sepinggan",         "koridor":"1", "urutan":64, "lat":-1.2655000,"lon":116.8912000,"status":"found"},
+
   {"id":"H065","nama":"Terminal Batu Ampar",       "koridor":"2A","urutan":1,  "lat":-1.2155000,"lon":116.8412000,"status":"found"},
   {"id":"H066","nama":"Sabulussalam",              "koridor":"2A","urutan":2,  "lat":-1.2198000,"lon":116.8455000,"status":"found"},
   {"id":"H067","nama":"Simpang Batu Ampar",        "koridor":"2A","urutan":3,  "lat":-1.2221000,"lon":116.8478000,"status":"found"},
@@ -96,6 +97,7 @@
   {"id":"H095","nama":"DKK",                       "koridor":"2A","urutan":31, "lat":-1.2761408,"lon":116.8439746,"status":"found"},
   {"id":"H096","nama":"Pasar Baru",                "koridor":"2A","urutan":32, "lat":-1.2765035,"lon":116.8419528,"status":"found"},
   {"id":"H097","nama":"Simpang Plaza Balikpapan A","koridor":"2A","urutan":33, "lat":-1.2767714,"lon":116.8415299,"status":"found"},
+  
   {"id":"H098","nama":"Terminal Batu Ampar",       "koridor":"2B","urutan":1,  "lat":-1.2155000,"lon":116.8412000,"status":"found"},
   {"id":"H099","nama":"Pegadaian",                 "koridor":"2B","urutan":2,  "lat":-1.2160000,"lon":116.8420000,"status":"found"},
   {"id":"H100","nama":"Samsat Muara Rapak",        "koridor":"2B","urutan":3,  "lat":-1.2341908,"lon":116.8360212,"status":"found"},
