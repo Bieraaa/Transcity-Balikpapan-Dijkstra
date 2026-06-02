@@ -1,9 +1,9 @@
 import os, sys, json
-sys.path.insert(0, os.path.dirname(__file__))
-from Djikstra.graphBuilder import load_graph_dari_file
-from Djikstra.Djikstra     import cari_rute
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Djikstra')))
+from graphBuilder import load_graph_dari_file
+from Djikstra import cari_rute
 
-HALTE_JSON = os.path.join(os.path.dirname(__file__), "output", "halte.json")
+HALTE_JSON        = os.path.join(os.path.dirname(__file__), '..', "output", "halte.json")
 
 # ANSI color
 RST  = "\033[0m";  BOLD = "\033[1m";  DIM  = "\033[2m"
