@@ -1,33 +1,41 @@
-import json, math
+import json
+import math
 from itertools import groupby
+from typing import Dict, List, Optional, Tuple
 
 # ══════════════════════════════════════════════════════════════
 # Bobot Waktu edge
 # ══════════════════════════════════════════════════════════════
 
-BOBOT_DEFAULT: dict[str, float] = {
-    "1" :  1.5,  # 95 menit ÷ 63 edge
+BOBOT_DEFAULT: Dict[str, float] = {
+    "1" : 1.5,   # 95 menit ÷ 63 edge
     "2A": 2.2,   # 70 menit ÷ 32 edge
     "2B": 3.7,   # 70 menit ÷ 19 edge
 }
 
-WAKTU_TRANSIT_DEFAULT = 10 # menit estimasi pindah bus di halte transit
+WAKTU_TRANSIT_DEFAULT = 10  # menit estimasi pindah bus di halte transit
 
 # ══════════════════════════════════════════════════════════════
 # Tarif
 # ══════════════════════════════════════════════════════════════
 
-TARIF_PER_KORIDOR = 5_000   # Rp 5.000 per koridor (umum)
-TARIF_PELAJAR     = 2_000   # Rp 2.000 per koridor (pelajar)
+TARIF_PER_KORIDOR = 5_000
+TARIF_PELAJAR     = 2_000
 
 
-def hitung_biaya(koridor_dipakai: list[str], pelajar: bool = False) -> dict:
-
-    koridor_bersih = [k for k in koridor_dipakai if k != "TRANSIT"]
-    jumlah         = len(koridor_bersih)
-    tarif          = TARIF_PELAJAR if pelajar else TARIF_PER_KORIDOR
-    total          = jumlah * tarif
-    detail         = " + ".join(f"Kor.{k} (Rp {tarif:,})" for k in koridor_bersih)
+def hitung_biaya(koridor_dipakai: List[str], pelajar: bool = False) -> dict:
+    # Strip sufiks "_balik" sebelum hitung biaya
+    koridor_bersih = [
+        k.replace("_balik", "")
+        for k in koridor_dipakai
+        if k not in ("TRANSIT",)
+    ]
+    # Deduplicate sambil jaga urutan (1 koridor = 1 tiket walau ada segmen balik)
+    koridor_unik = list(dict.fromkeys(koridor_bersih))
+    jumlah = len(koridor_unik)
+    tarif  = TARIF_PELAJAR if pelajar else TARIF_PER_KORIDOR
+    total  = jumlah * tarif
+    detail = " + ".join(f"Kor.{k} (Rp {tarif:,})" for k in koridor_unik)
 
     return {
         "jumlah_tiket":    jumlah,
@@ -37,8 +45,9 @@ def hitung_biaya(koridor_dipakai: list[str], pelajar: bool = False) -> dict:
         "tipe":            "Pelajar" if pelajar else "Umum",
     }
 
+
 # ══════════════════════════════════════════════════════════════
-# HAVERSINE - JARAK DUA KOORDINAT (KM)
+# Haversine
 # ══════════════════════════════════════════════════════════════
 
 def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -46,49 +55,79 @@ def haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     d1 = math.radians(lat2 - lat1)
     d2 = math.radians(lon2 - lon1)
     a  = (math.sin(d1 / 2) ** 2
-        + math.cos(math.radians(lat1))
-        * math.cos(math.radians(lat2))
-        * math.sin(d2 / 2) ** 2)
+          + math.cos(math.radians(lat1))
+          * math.cos(math.radians(lat2))
+          * math.sin(d2 / 2) ** 2)
     return R * 2 * math.asin(math.sqrt(a))
 
+
+def hitung_jarak_rute(rute_id: List[str], halte_list: list) -> dict:
+    id_ke_h = {h["id"]: h for h in halte_list}
+    segmen  = []
+    total   = 0.0
+    skip    = 0
+    prev    = None
+
+    for hid in rute_id:
+        h = id_ke_h.get(hid, {})
+        if h.get("lat") and h.get("lon"):
+            if prev:
+                km = haversine(prev["lat"], prev["lon"], h["lat"], h["lon"])
+                segmen.append({"dari": prev["nama"], "ke": h["nama"], "km": round(km, 2)})
+                total += km
+            prev = h
+        else:
+            skip += 1
+
+    return {"total_km": round(total, 2), "segmen": segmen, "halte_skip": skip}
+
+
 # ══════════════════════════════════════════════════════════════
-# Helper internal
+# Helper
 # ══════════════════════════════════════════════════════════════
 
-def _norm(nama: str) -> str:
+def _normalisasi(nama: str) -> str:
     return nama.lower().strip()
 
 
-def _tambah_edge(edges: list, dari: str, ke: str,
-                 waktu: int, koridor: str, **extra) -> None:
-    """Tambahkan edge dua arah (undirected)."""
-    base  = {"dari": dari, "ke": ke,   "waktu_menit": waktu, "koridor": koridor, **extra}
-    balik = {"dari": ke,   "ke": dari, "waktu_menit": waktu, "koridor": koridor, **extra}
-    edges.extend([base, balik])
+def _patch_koordinat(halte_list: list) -> list:
+    for h in halte_list:
+        if h.get("lat") is None or h.get("lon") is None:
+            print(f"  ⚠️  Koordinat kosong: [{h['koridor']}] {h['nama']}")
+    return halte_list
 
 
 # ══════════════════════════════════════════════════════════════
 # Build graph
 # ══════════════════════════════════════════════════════════════
 
-def build_graph(halte_list: list, bobot: dict [str, float], waktu_transit: float) -> dict:
-    edges: list[dict] = []
+def build_graph(halte_list: list, bobot: dict, waktu_transit: int) -> dict:
+    _patch_koordinat(halte_list)
+    edges: List[dict] = []
 
-    # ── 1. Edge dalam koridor ──────────────────────────────────
+    # Kelompokkan per koridor, urut ascending
     sorted_h = sorted(halte_list, key=lambda x: (x["koridor"], x["urutan"]))
-    for koridor, grp in groupby(sorted_h, key=lambda x: x["koridor"]):
-        halte_kor = list(grp)
-        w = bobot.get(koridor, 2.0)
+    kor_map: Dict[str, list] = {}
+    for kor, grp in groupby(sorted_h, key=lambda x: x["koridor"]):
+        kor_map[kor] = sorted(list(grp), key=lambda x: x["urutan"])
+
+    # 1. Edge MAJU dalam koridor (satu arah)
+    for kor, halte_kor in kor_map.items():
+        w = bobot.get(kor, 3)
         for j in range(len(halte_kor) - 1):
             a, b = halte_kor[j], halte_kor[j + 1]
-            # Edge dibuat tanpa syarat koordinat
-            _tambah_edge(edges, a["id"], b["id"], w, koridor)
+            if a["lat"] is not None and b["lat"] is not None:
+                edges.append({
+                    "dari": a["id"], "ke": b["id"],
+                    "waktu_menit": w, "koridor": kor
+                })
 
-    # ── 2. Edge transit ───────────────────────────────────────
-    nama_map: dict[str, list] = {}
+    # 2. Edge TRANSIT dua arah (nama halte sama, koridor beda)
+    nama_map: Dict[str, list] = {}
     for h in halte_list:
-        nama_map.setdefault(_norm(h["nama"]), []).append(h)
+        nama_map.setdefault(_normalisasi(h["nama"]), []).append(h)
 
+    transit_halte_ids: set = set()
     transit_count = 0
     for key, group in nama_map.items():
         pairs = [
@@ -98,66 +137,67 @@ def build_graph(halte_list: list, bobot: dict [str, float], waktu_transit: float
             if group[i]["koridor"] != group[j]["koridor"]
         ]
         for a, b in pairs:
-            ket = f"Transit {a['koridor']} <-> {b['koridor']}"
-            _tambah_edge(edges, a["id"], b["id"],
-                        waktu_transit, "TRANSIT", keterangan=ket)
-            transit_count += 1
+            if a["lat"] is not None and b["lat"] is not None:
+                ket = f"Transit {a['koridor']} <-> {b['koridor']}"
+                edges.append({"dari": a["id"], "ke": b["id"],
+                              "waktu_menit": waktu_transit,
+                              "koridor": "TRANSIT", "keterangan": ket})
+                edges.append({"dari": b["id"], "ke": a["id"],
+                              "waktu_menit": waktu_transit,
+                              "koridor": "TRANSIT", "keterangan": ket})
+                transit_halte_ids.add(a["id"])
+                transit_halte_ids.add(b["id"])
+                transit_count += 1
 
-    print(f"  🔗 Total edge: {len(edges)} | Transit points: {transit_count}")
+    # 3. Edge MUNDUR dari titik transit ke semua halte sebelumnya di koridor yang sama.
+    #    Ini memungkinkan penumpang naik bus arah berlawanan setelah transit.
+    #    Contoh: transit di Ace Hardware [2A, urutan 29], bisa mundur ke PLN MT Haryono [2A, urutan 15].
+    #    Bobot = selisih_urutan × bobot_koridor (proporsional dengan jarak yang ditempuh).
+    id_ke_halte = {h["id"]: h for h in halte_list}
+    mundur_count = 0
 
-    # ── 3. Adjacency-list ─────────────────────────────────────
-    graph: dict[str, list] = {h["id"]: [] for h in halte_list}
-    for e in edges:
-        graph[e["dari"]].append({
-            "ke":          e["ke"],
-            "waktu_menit": e["waktu_menit"],
-            "koridor":     e["koridor"],
-        })
+    for hid in transit_halte_ids:
+        h   = id_ke_halte.get(hid, {})
+        kor = h.get("koridor", "")
+        w   = bobot.get(kor, 3)
 
-    return graph
-
-
-# ══════════════════════════════════════════════════════════════
-# Hitung jarak total rute (KM)
-# ══════════════════════════════════════════════════════════════
-
-def hitung_jarak_rute(rute_id: list[str], halte_list: list) -> dict:
-    id_ke_h = {h["id"]: h for h in halte_list}
-    segmen  = []
-    skip    = 0
-    total   = 0.0
-    prev    = None
-
-    for hid in rute_id:
-        h = id_ke_h.get(hid, {})
-        if h.get("lat") and h.get("lon"):
-            if prev:
-                km = haversine(prev["lat"], prev["lon"], h["lat"], h["lon"])
-                segmen.append({
-                    "dari": prev["nama"],
-                    "ke":   h["nama"],
-                    "km":   round(km, 2),
+        for prev_h in kor_map.get(kor, []):
+            if prev_h["urutan"] < h["urutan"] and prev_h["lat"] is not None:
+                selisih = h["urutan"] - prev_h["urutan"]
+                edges.append({
+                    "dari":        hid,
+                    "ke":          prev_h["id"],
+                    "waktu_menit": selisih * w,
+                    "koridor":     kor + "_balik",  # penanda arah mundur
                 })
-                total += km
-            prev = h
-        else:
-            skip += 1
+                mundur_count += 1
 
-    return {
-        "total_km":   round(total, 2),
-        "segmen":     segmen,
-        "halte_skip": skip,
-    }
+    print(f"  🔗 Edge maju: {len(edges) - transit_count*2 - mundur_count}"
+          f"  |  Transit: {transit_count*2}"
+          f"  |  Mundur: {mundur_count}"
+          f"  |  Total: {len(edges)}")
+
+    # 4. Bangun adjacency list
+    graph: Dict[str, list] = {h["id"]: [] for h in halte_list}
+    for e in edges:
+        if e["dari"] in graph:
+            graph[e["dari"]].append({
+                "ke":          e["ke"],
+                "waktu_menit": e["waktu_menit"],
+                "koridor":     e["koridor"],
+            })
+
+    return graph  
 
 # ══════════════════════════════════════════════════════════════
 # Load dari file
 # ══════════════════════════════════════════════════════════════
 
 def load_graph_dari_file(
-    path_halte:    str       = "output/halte.json",
-    bobot:         dict|None = None,
-    waktu_transit: int       = WAKTU_TRANSIT_DEFAULT,
-) -> tuple[dict, list]:
+    path_halte: str = "output/halte.json",
+    bobot: Optional[Dict] = None,
+    waktu_transit: int = WAKTU_TRANSIT_DEFAULT,
+) -> Tuple[dict, list]:
 
     if bobot is None:
         bobot = BOBOT_DEFAULT
