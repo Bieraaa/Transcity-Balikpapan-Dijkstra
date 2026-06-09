@@ -511,7 +511,7 @@ class MainWindow(QMainWindow):
 
         # Card Ringkasan
         c1 = InfoCard("✅ Ringkasan Perjalanan", "#00C853")
-        c1.tambah_baris("⏱  Waktu tempuh", f"{result.total_waktu} menit")
+        c1.tambah_baris("⏱  Estimasi Waktu Tempuh ", f"{result.total_waktu} menit")
         c1.tambah_baris("🚏  Jumlah halte", f"{result.jumlah_halte} halte")
         c1.tambah_baris("🛤  Koridor",
                         "  →  ".join(result.koridor_dipakai) or "-")
